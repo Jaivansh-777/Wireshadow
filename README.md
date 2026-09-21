@@ -34,10 +34,19 @@ you a PDF report. Think of it as a security camera for your Wi-Fi.
 
 ## Install (copy-paste)
 
+**Step 0 — get the code (everyone):**
+
+```bash
+git clone https://github.com/Jaivansh-777/Wireshadow.git
+cd Wireshadow
+```
+
+> Cloned folder is named `Wireshadow` (capital W) — `cd` into it, then follow
+> your distro block below. All later commands assume you're inside it.
+
 **Kali Linux / Debian / Ubuntu (bash):**
 
 ```bash
-cd ~/ai-network-scanner
 python3 -m venv venv
 source venv/bin/activate
 pip install setuptools wheel
@@ -48,7 +57,6 @@ sudo apt install -y nmap python3-venv
 **Arch / CachyOS (fish):**
 
 ```fish
-cd ~/ai-network-scanner
 python -m venv venv
 source venv/bin/activate.fish
 pip install setuptools wheel
