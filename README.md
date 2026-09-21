@@ -24,15 +24,28 @@ you a PDF report. Think of it as a security camera for your Wi-Fi.
 
 ## You need
 
-- **Linux** (you're on Arch/CachyOS — perfect)
-- **Python 3.11+** (`python --version` to check)
-- **nmap** — the actual scanning engine (`sudo pacman -S nmap`)
+- **Linux** — Kali or Arch/CachyOS both work
+- **Python 3.11+** (`python3 --version` to check)
+- **nmap** — the actual scanning engine
+  - Kali/Debian: `sudo apt install -y nmap python3-venv`
+  - Arch: `sudo pacman -S nmap`
 - An **OpenRouter API key** (free) — only needed for the AI verdict; without it
   WIRESHADOW still works using built-in offline scoring
 
-## Install (copy-paste, one block)
+## Install (copy-paste)
 
-For **fish** shell (CachyOS default):
+**Kali Linux / Debian / Ubuntu (bash):**
+
+```bash
+cd ~/ai-network-scanner
+python3 -m venv venv
+source venv/bin/activate
+pip install setuptools wheel
+pip install -r requirements.txt
+sudo apt install -y nmap python3-venv
+```
+
+**Arch / CachyOS (fish):**
 
 ```fish
 cd ~/ai-network-scanner
@@ -52,16 +65,21 @@ For **bash/zsh**, replace line 3 with `source venv/bin/activate`.
 
 1. Go to **https://openrouter.ai** → sign up (no credit card needed)
 2. **Keys** page → **Create Key** → copy it (starts with `sk-or-v1-...`)
-3. Tell your shell about it (fish):
+3. Tell your shell about it:
    ```fish
-   set -x OPENROUTER_API_KEY "sk-or-v1-paste-yours-here"
+   set -x OPENROUTER_API_KEY "sk-or-v1-paste-yours-here"   # fish
    ```
-   To keep it forever: `set -Ux OPENROUTER_API_KEY "..."` (universal variable).
+   ```bash
+   export OPENROUTER_API_KEY="sk-or-v1-paste-yours-here"   # bash/zsh
+   ```
+   Fish forever: `set -Ux OPENROUTER_API_KEY "..."`. Bash forever: append the
+   export line to `~/.bashrc`.
 
 ## Run your first scan
 
 ```fish
-source venv/bin/activate.fish   # every new terminal!
+source venv/bin/activate.fish   # fish — every new terminal!
+# source venv/bin/activate      # bash/zsh instead
 python main.py scan -t auto
 ```
 
