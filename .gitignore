@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.egg-info/
+
+# WIRESHADOW runtime artifacts (local only — never commit)
+scan_audit.log
+db/*.db
+db/*.db-journal
+reports_output/
+.env
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
